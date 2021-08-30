@@ -1,0 +1,8 @@
+
+<div  class="col-sm-3 col-md-3 card">
+    <!-- <img src="img.jpg" alt="John" style="width:100%"> -->
+    <a [routerLink]="['/create-user']" [queryParams]="user"><h1>{{user.name}}</h1></a>
+    <p><i class="fa fa-dribbble">{{user.email}}</i></p>
+    <p><i class="fa fa-dribbble">{{user.phone}}</i></p>
+    <a href="#"><i class="fa fa-dribbble">{{user.website}}</i></a>
+</div>

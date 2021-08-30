@@ -1,0 +1,37 @@
+<h1 *ngIf="!editMode">Please enter user details below for new user</h1>
+<h1 *ngIf="editMode">Please update details below for exixsting user</h1>
+<div *ngIf="showSuccessAlert" class="alert alert-success" role="alert">
+    User was created successfully
+</div>
+<div *ngIf="showErrorAlert" class="alert alert-danger" role="alert">
+    User creation failed
+</div>
+<form [formGroup]="userForm">
+    <div class="form-group">
+        <label for="name" class="col-sm-1 col-md-1 controllabel required">Name </label>
+        <input id="name" [required]=true name="name" type="text" class="input-control" formControlName="name">
+        <!-- <p ></p> -->
+        <p *ngIf="!userForm.controls.name?.valid && (userForm.controls.name?.dirty ||userForm.controls.name?.touched)"
+            class="has-error">
+            Name is required</p>
+    </div>
+    <div class="form-group">
+        <label for="phone" class="col-sm-1 col-md-1 controllabel required">Phone </label>
+        <input id="phone" type="text" class="input-control" formControlName="phone">
+        <p *ngIf="!userForm.controls.phone?.valid && (userForm.controls.phone?.dirty ||userForm.controls.phone?.touched)"
+            class="has-error">
+            Phone is required</p>
+    </div>
+    <div class="form-group">
+        <label for="email" class="col-sm-1 col-md-1 controllabel required">email:</label>
+        <input id="email" type="text" class="input-control" formControlName="email">
+        <p *ngIf="!userForm.controls.email?.valid && (userForm.controls.email?.dirty ||userForm.controls.email?.touched)"
+            class="has-error">
+            email is required</p>
+    </div>
+    <div class="form-group">
+        <label for="website" class="col-sm-1 col-md-1 controllabel">website: </label>
+        <input id="website" type="text" class="input-control" formControlName="website">
+    </div>
+</form>
+<button class="btn btn-primary" (click)="createUser()" [disabled]="userForm.status==='INVALID'">submit</button>
